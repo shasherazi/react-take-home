@@ -1,24 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect } from 'react';
 import './App.css';
+import { Offer } from './components/Offer';
 
 function App() {
+  const [campaigns, setCampaigns] = React.useState([]);
+
+  async function fetchData() {
+    const response = await fetch('https://www.plugco.in/public/take_home_sample_feed');
+    const data = await response.json();
+    setCampaigns(data.campaigns);
+  }
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className='offers'>
+        {campaigns.map((campaign, index) => {
+          const { campaign_name, campaign_icon_url, pay_per_install } = campaign;
+          const medias = campaign.medias;
+          return (
+            <Offer
+              key={index}
+              campaign_name={campaign_name}
+              campaign_icon_url={campaign_icon_url}
+              pay_per_install={pay_per_install}
+              medias={medias}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 }

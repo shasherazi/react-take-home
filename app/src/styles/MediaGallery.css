@@ -1,0 +1,46 @@
+.media-gallery {
+  display: flex;
+  gap: 15px;
+  height: 350px; 
+  overflow-y: hidden;
+}
+
+.media-gallery::-webkit-scrollbar{
+  display: none;
+}
+
+.media-gallery-cover {
+  border-radius: 10px;
+  height: 100%;
+  overflow-y: hidden;
+  filter: brightness(0.69)
+}
+
+.media-gallery-cover-wrapper{
+  position: relative;
+  height: 83%;
+}
+
+.media-gallery-play-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: xx-large;
+  color: white;
+}
+
+.media-gallery-copy-and-download-icons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 20%;
+  font-size: xxx-large;
+  color: gray;
+}
+
+.media-gallery-copy-and-download-icons * {
+  padding: 12px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+}
