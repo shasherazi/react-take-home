@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import './App.css';
 import { Offer } from './components/Offer';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 
 function App() {
   const [campaigns, setCampaigns] = React.useState([]);
@@ -31,6 +33,7 @@ function App() {
           );
         })}
       </div>
+      <ToastContainer />
     </div>
   );
 }
